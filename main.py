@@ -59,15 +59,23 @@ class Main(object):
                 print("启动线程失败")
         
             
-    # 增加一个线程
     def newThread(self):
+        """
+        一个单线程
+        """
         index = self.index
         self.index += 1
 
         while True:
             print(time.strftime("%H:%M:%S", time.localtime()) + "开始爬取页面 " + str(index))
             startTime = time.time()
-            if self.getItems(index):
+
+            t = self.getItems(index)
+
+            if t == 'over':
+                self.over()
+                break
+            if t == True:
                 overTime = time.time()
                 print(time.strftime("%H:%M:%S", time.localtime()) + " 成功爬取页面 " + str(index) + "用时: " + str(overTime - startTime) + "s" )
                 try:
@@ -115,7 +123,7 @@ class Main(object):
             return False
         
         if self.parse.getOver(html):
-            self.over()
+            return 'over'
 
         items = self.parse.getItems(html)
         if items == False:
@@ -422,10 +430,10 @@ class Parse(object):
 
 
 if __name__ == '__main__':
-    main = Main("https://www.pixiv.net/search.php?word=%E5%92%8C%E6%B3%89%E7%B4%97%E9%9C%A7&s_mode=s_tag_full&order=date_d")
+    main = Main("https://www.pixiv.net/search.php?s_mode=s_tag&word=%E9%AA%8C%E5%AD%95%E6%A3%92")
 
     # 从浏览器复制
-    # cookiesText = "login_ever=yes; _tdim=8f3e76e2-357f-4599-efb6-0982a66fed17; is_sensei_service_user=1; p_ab_id=5; p_ab_id_2=6; __utmz=235335808.1518268144.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); login_bc=1; _ga=GA1.2.2058836629.1518268144; _gid=GA1.2.506767615.1518268171; PHPSESSID=27982114_e0d2c5b3f34e8f23e3ea2af981a7636c; device_token=3fcec64cd9b4ce40a4cad055f44361c9; c_type=20; a_type=0; b_type=2; module_orders_mypage=%5B%7B%22name%22%3A%22sketch_live%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22tag_follow%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22recommended_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22showcase%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22everyone_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22following_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22mypixiv_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22fanbox%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22featured_tags%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22contests%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22user_events%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22sensei_courses%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22spotlight%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22booth_follow_items%22%2C%22visible%22%3Atrue%7D%5D; __utmv=235335808.|2=login%20ever=yes=1^3=plan=normal=1^5=gender=female=1^6=user_id=27982114=1^9=p_ab_id=5=1^10=p_ab_id_2=6=1^11=lang=zh=1; __utma=235335808.2058836629.1518268144.1518268144.1518328926.2; __utmc=235335808; __utmt=1; __utmb=235335808.1.10.1518328926; _td=6b937fc5-dc5b-49f9-b30d-61f88f1e53e5"
+    cookiesText = "login_ever=yes; _tdim=8f3e76e2-357f-4599-efb6-0982a66fed17; is_sensei_service_user=1; p_ab_id=5; p_ab_id_2=6; __utmz=235335808.1518268144.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); login_bc=1; _ga=GA1.2.2058836629.1518268144; _gid=GA1.2.506767615.1518268171; PHPSESSID=27982114_e0d2c5b3f34e8f23e3ea2af981a7636c; device_token=3fcec64cd9b4ce40a4cad055f44361c9; c_type=20; a_type=0; b_type=2; module_orders_mypage=%5B%7B%22name%22%3A%22sketch_live%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22tag_follow%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22recommended_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22showcase%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22everyone_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22following_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22mypixiv_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22fanbox%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22featured_tags%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22contests%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22user_events%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22sensei_courses%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22spotlight%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22booth_follow_items%22%2C%22visible%22%3Atrue%7D%5D; __utmv=235335808.|2=login%20ever=yes=1^3=plan=normal=1^5=gender=female=1^6=user_id=27982114=1^9=p_ab_id=5=1^10=p_ab_id_2=6=1^11=lang=zh=1; __utma=235335808.2058836629.1518268144.1518268144.1518328926.2; __utmc=235335808; __utmt=1; __utmb=235335808.1.10.1518328926; _td=6b937fc5-dc5b-49f9-b30d-61f88f1e53e5"
     
     main.setCookies(cookiesText)
     main.threadIndex = 4
