@@ -1,6 +1,6 @@
 
 """
-将图片排序
+将图片按点赞数排序排序
 """
 import os, os.path, shutil, re
 
