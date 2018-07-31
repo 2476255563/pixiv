@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# -*- encoding: utf-8 -*-
 from urllib import request, parse
 from urllib.error import HTTPError,URLError
 import re, json, http.cookiejar, requests
@@ -432,10 +434,10 @@ class Parse(object):
 if __name__ == '__main__':
     # 实例化对象传入 url
     # 我永远喜欢和泉纱雾.jpg
-    main = Main("https://www.pixiv.net/search.php?s_mode=s_tag&word=%E9%AA%8C%E5%AD%95%E6%A3%92")
+    main = Main("https://www.pixiv.net/search.php?s_mode=s_tag_full&word=%E3%82%A8%E3%83%AD%E3%83%9E%E3%83%B3%E3%82%AC%E5%85%88%E7%94%9F")
 
     # 从浏览器复制
-    cookiesText = ""
+    cookiesText = "first_visit_datetime_pc=2018-06-30+00%3A10%3A27; p_ab_id=1; p_ab_id_2=0; yuid=OXOUVVU57; limited_ads=%7B%22header%22%3A%22%22%7D; _ga=GA1.2.521122616.1530285031; PHPSESSID=27982114_d03f17b5fc938a6b55d312a46d2e5e54; device_token=d998fa8593ea54827788788165e8d71b; privacy_policy_agreement=1; c_type=21; a_type=0; b_type=2; module_orders_mypage=%5B%7B%22name%22%3A%22sketch_live%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22tag_follow%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22recommended_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22showcase%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22everyone_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22following_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22mypixiv_new_illusts%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22fanbox%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22featured_tags%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22contests%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22user_events%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22sensei_courses%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22spotlight%22%2C%22visible%22%3Atrue%7D%2C%7B%22name%22%3A%22booth_follow_items%22%2C%22visible%22%3Atrue%7D%5D; login_ever=yes; __utmv=235335808.|2=login%20ever=yes=1^3=plan=normal=1^5=gender=female=1^6=user_id=27982114=1^9=p_ab_id=1=1^10=p_ab_id_2=0=1^11=lang=zh=1; __utmz=235335808.1532355869.4.2.utmcsr=saucenao.com|utmccn=(referral)|utmcmd=referral|utmcct=/search.php; bookmark_tag_type=count; bookmark_tag_order=desc; tag_view_ranking=IQ7tgDp_ul~fryDCikS2a~ANkTxNMKP2~CbmkqBJulM~nWNfKVC7a7~Lt-oEicbBr~y8GNntYHsi~-M68AYIG8m~BU9SQkS-zU~XEuS3TPyCa~o36vx7iDMs~0xsDLqCEW6~aKhT3n4RHZ~HAcBV7C2an~39jilw2rHw~zyGISprTEN~WH24p0Na_T~DXPphy6Z-6~FFBbSsTrOz~5uPzraJZrT~m8DYaaU5ad~D9s5nJPUrV~VaMZcwCWaC~Lnjc6j8mlX~9bFfWMq61z~a4NwQM4c8N~z4sHnEviWf~zyKU3Q5L4C~OjkhIE25bp~eQO7Nnq-Qm~FqVQndhufZ~5z2CDTZA2o~RcahSSzeRf; is_sensei_service_user=1; __utma=235335808.521122616.1530285031.1532874646.1533042582.7; __utmc=235335808; __utmt=1; __utmb=235335808.1.10.1533042582; OX_plg=pm"
     
     main.setCookies(cookiesText)
     main.threadIndex = 4
