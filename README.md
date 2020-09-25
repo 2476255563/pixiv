@@ -1,5 +1,4 @@
 # 爬取pixiv搜索页面下的所有图片
-# 写的不是很好，毕竟我不是玩python的
 ![](/myImages/hequanshawu.jpg)
 
 
